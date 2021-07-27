@@ -1,4 +1,3 @@
-  
 <!DOCTYPE html>
 
 {% load staticfiles %}
@@ -10,13 +9,14 @@
     </head>
 
     <body>
-        <h1>About</h1>
+        <h1>Rango says...</h1>
         <div>
-            This tutorial has been put together by David Maxwell.<br />
+            here is the about page. <br />
+            <strong>This tutorial has been put together by Xinyang Zhang.</strong><br />
         </div>
         <div>
             <a href="/rango/">Index</a><br />
-            <img src="{% static 'images/rango.PNG' %}" alt="Picture of Rango" />
+            <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
             <img src="{{ MEDIA_URL }}cat.jpg" alt="Picture of a Cat" />
         </div>
     </body>
