@@ -11,6 +11,8 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 
 def index(request):
+    request.session.set_test_cookie()
+    
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
     
@@ -18,12 +20,17 @@ def index(request):
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['categories'] = category_list
     context_dict['pages'] = page_list
+    
     return render(request, 'rango/index.html', context=context_dict)
 
 # def about(request):
 #     return render(request, 'rango/about.html')
 
 def about(request):
+    if request.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
+
     # prints out whether the method is a GET or a POST
     print(request.method)
     # prints out the user name, if no one is logged in it prints `AnonymousUser`
